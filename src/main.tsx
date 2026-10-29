@@ -6,9 +6,9 @@ import "./index.css";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    {/* BASE_URL is "/<repo>/" on the default github.io URL and "/" on a
-        custom domain (set by the deploy workflow's --base flag). */}
-    <BrowserRouter basename={import.meta.env.BASE_URL}>
+    {/* "/<repo>/" on the default github.io URL, "/" on a custom domain:
+        set at runtime by the <base> tag index.html adds. */}
+    <BrowserRouter basename={new URL(document.baseURI).pathname}>
       <App />
     </BrowserRouter>
   </StrictMode>,

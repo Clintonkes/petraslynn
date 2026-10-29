@@ -16,12 +16,19 @@
             .join('?');
           window.history.replaceState(null, null, l.pathname.slice(0, -1) + decoded + l.hash);
         }
+        // Where the site lives, decided here rather than at build time, so one
+        // build works on <user>.github.io/<repo>/ and on any custom domain,
+        // including one added after the last deploy. Every asset path in the
+        // build is relative to this <base>, and the router reads it too.
+        var base = document.createElement('base');
+        base.href = /\.github\.io$/.test(l.hostname) ? '/' + l.pathname.split('/')[1] + '/' : '/';
+        document.head.appendChild(base);
       })(window.location);
     </script>
-    <!-- Replaced at build time with a script that preloads the top photos of
+    <!-- Replaced at build time with a script that preloads the top photo of
          the page being opened (see vite.config.ts). It must stay below the
-         redirect decoder above, which restores the real path, and above the
-         stylesheets, which would otherwise delay it. -->
+         script above, which restores the real path and sets <base>, and above
+         the stylesheets, which would otherwise delay it. -->
     <!--entry-image-preload-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#15271d" />

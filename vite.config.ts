@@ -11,12 +11,8 @@ const PLACEHOLDER = "<!--entry-image-preload-->";
 // being opened, at the width this screen needs, so it downloads in parallel
 // with the bundle instead of after it.
 function preloadEntryImages(): Plugin {
-  let base = "/";
   return {
     name: "preload-entry-images",
-    configResolved(config) {
-      base = config.base;
-    },
     transformIndexHtml(html) {
       if (!html.includes(PLACEHOLDER)) {
         throw new Error(`index.html is missing the ${PLACEHOLDER} placeholder`);
@@ -29,7 +25,7 @@ function preloadEntryImages(): Plugin {
         ]),
       );
       const script =
-        `(function(){var m=${JSON.stringify(map)},b=${JSON.stringify(base)},p=location.pathname;` +
+        `(function(){var m=${JSON.stringify(map)},b=new URL(document.baseURI).pathname,p=location.pathname;` +
         `if(p.indexOf(b)===0)p='/'+p.slice(b.length);p=p.replace(/\\/+$/,'')||'/';` +
         `var u=m[p]||m['/'],l=document.createElement('link');l.rel='preload';l.as='image';` +
         `l.href=u[0];l.setAttribute('imagesrcset',u[1]);l.setAttribute('imagesizes',u[2]);` +
@@ -40,6 +36,9 @@ function preloadEntryImages(): Plugin {
 }
 
 export default defineConfig({
+  // Relative asset paths: index.html sets <base> at runtime to wherever the
+  // site is served from (the repo sub-path on github.io, "/" on a domain).
+  base: "./",
   plugins: [react(), preloadEntryImages()],
   resolve: {
     alias: {
