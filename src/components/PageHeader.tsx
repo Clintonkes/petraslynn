@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
+import Photo from "./Photo";
+import { SIZES } from "@/config/images";
 
 interface PageHeaderProps {
   title: string;
@@ -13,7 +15,7 @@ export default function PageHeader({ title, subtitle, breadcrumb, image }: PageH
     // pt-20 clears the fixed navbar (h-20).
     <section className="relative pt-20 overflow-hidden">
       <div className="absolute inset-0">
-        <img src={image} alt="" className="w-full h-full object-cover" />
+        <Photo priority src={image} sizes={SIZES.full} alt="" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-r from-pine-950/95 via-pine-900/85 to-pine-900/60" />
       </div>
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">

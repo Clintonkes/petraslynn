@@ -6,13 +6,14 @@ import {
 import { useState } from "react";
 import PageHeader from "@/components/PageHeader";
 import { site, services } from "@/config/site";
+import { pageImages, SIZES } from "@/config/images";
+import Photo from "@/components/Photo";
+
+const { hero: heroImage } = pageImages.services;
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Scissors, Sparkles, Leaf, Droplets, Trees, Shovel,
 };
-
-const heroImage =
-  "https://images.pexels.com/photos/38936349/pexels-photo-38936349.jpeg?auto=compress&cs=tinysrgb&w=1600";
 
 export default function Services() {
   const [openIndex, setOpenIndex] = useState(0);
@@ -103,8 +104,9 @@ export default function Services() {
                           <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
                             <div className="md:col-span-2">
                               <div className="rounded-xl overflow-hidden h-44">
-                                <img
+                                <Photo
                                   src={service.image}
+                                  sizes={SIZES.serviceThumb}
                                   alt={service.title}
                                   className="w-full h-full object-cover"
                                 />

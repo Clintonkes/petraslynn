@@ -7,9 +7,9 @@ import {
 import PageHeader from '@/components/PageHeader';
 import { site } from '@/config/site';
 import { createContact } from '@/lib/api';
+import { pageImages } from "@/config/images";
 
-const heroImage =
-  'https://images.pexels.com/photos/38936338/pexels-photo-38936338.jpeg?auto=compress&cs=tinysrgb&w=1600';
+const { hero: heroImage } = pageImages.contact;
 
 const subjectOptions = [
   'General Question', 'Schedule Service', 'Billing Inquiry',

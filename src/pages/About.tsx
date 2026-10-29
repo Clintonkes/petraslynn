@@ -5,13 +5,10 @@ import {
 } from "lucide-react";
 import PageHeader from "@/components/PageHeader";
 import { site } from "@/config/site";
+import { pageImages, SIZES } from "@/config/images";
+import Photo from "@/components/Photo";
 
-const heroImage =
-  "https://images.pexels.com/photos/2604622/pexels-photo-2604622.jpeg?auto=compress&cs=tinysrgb&w=1600";
-const teamImage =
-  "https://images.pexels.com/photos/5163429/pexels-photo-5163429.jpeg?auto=compress&cs=tinysrgb&w=1200";
-const areaImage =
-  "https://images.pexels.com/photos/29014467/pexels-photo-29014467.jpeg?auto=compress&cs=tinysrgb&w=1200";
+const { hero: heroImage, team: teamImage, area: areaImage } = pageImages.about;
 
 const values = [
   { icon: Heart, title: "Local Roots", description: "We are part of the Aurora community. Every property we care for reflects our pride in our home and our state." },
@@ -83,8 +80,9 @@ export default function About() {
             </div>
             <div className="relative">
               <div className="rounded-2xl overflow-hidden shadow-2xl">
-                <img
+                <Photo
                   src={teamImage}
+                  sizes={SIZES.half}
                   alt="Petraslynn team at work"
                   className="w-full h-[450px] object-cover"
                 />
@@ -190,8 +188,9 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             <div className="rounded-2xl overflow-hidden shadow-2xl">
-              <img
+              <Photo
                 src={areaImage}
+                sizes={SIZES.half}
                 alt="Colorado landscape"
                 className="w-full h-[400px] object-cover"
               />

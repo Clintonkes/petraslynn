@@ -6,9 +6,9 @@ import {
 import PageHeader from "@/components/PageHeader";
 import { site, services } from "@/config/site";
 import { createBooking } from "@/lib/api";
+import { pageImages } from "@/config/images";
 
-const heroImage =
-  "https://images.pexels.com/photos/37554739/pexels-photo-37554739.jpeg?auto=compress&cs=tinysrgb&w=1600";
+const { hero: heroImage } = pageImages.quote;
 
 const serviceOptions = [
   ...services.map((s) => s.title),

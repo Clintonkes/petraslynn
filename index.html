@@ -18,14 +18,26 @@
         }
       })(window.location);
     </script>
+    <!-- Replaced at build time with a script that preloads the top photos of
+         the page being opened (see vite.config.ts). It must stay below the
+         redirect decoder above, which restores the real path, and above the
+         stylesheets, which would otherwise delay it. -->
+    <!--entry-image-preload-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#15271d" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/petraslynn-icon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="preconnect" href="https://images.pexels.com" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <!-- Loaded without blocking the first paint; text shows in the fallback
+         font for a moment, then swaps. -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
     <title>Petraslynn LLC | Lawn Care and Landscaping in Aurora, Colorado</title>
     <meta name="description" content="Petraslynn LLC is a licensed and insured lawn care and landscaping company in Aurora, Colorado, serving the Denver metro area with precision mowing, hedge and shrub pruning, seasonal cleanups, irrigation, turf care and custom landscape design. Request a free estimate." />
     <meta property="og:type" content="website" />

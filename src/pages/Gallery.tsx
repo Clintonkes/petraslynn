@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 import { ArrowRight, X, ZoomIn } from "lucide-react";
 import PageHeader from "@/components/PageHeader";
 import { galleryImages } from "@/config/site";
+import { pageImages, SIZES } from "@/config/images";
+import Photo from "@/components/Photo";
 
-const heroImage =
-  "https://images.pexels.com/photos/280222/pexels-photo-280222.jpeg?auto=compress&cs=tinysrgb&w=1600";
+const { hero: heroImage } = pageImages.gallery;
+
 const categories = ["All", "Mowing", "Trimming", "Cleanup", "Irrigation", "Design", "Full Service"];
 
 export default function Gallery() {
@@ -64,8 +66,9 @@ export default function Gallery() {
                 className="group relative rounded-xl overflow-hidden shadow-sm cursor-pointer break-inside-avoid"
                 onClick={() => openLightbox(index)}
               >
-                <img
+                <Photo
                   src={img.url}
+                  sizes={SIZES.galleryGrid}
                   alt={img.caption}
                   className="w-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
@@ -122,8 +125,9 @@ export default function Gallery() {
             &#8594;
           </button>
           <div className="max-w-4xl" onClick={(e) => e.stopPropagation()}>
-            <img
+            <Photo
               src={filtered[lightbox].url}
+              sizes={SIZES.lightbox}
               alt={filtered[lightbox].caption}
               className="max-w-full max-h-[80vh] rounded-lg shadow-2xl mx-auto"
             />

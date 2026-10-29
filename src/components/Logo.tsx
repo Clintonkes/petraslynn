@@ -8,7 +8,7 @@ interface LogoMarkProps {
  * The mark spells out the name: "petra" (Greek, stone) as a cairn of
  * stones, "lynn" (Celtic llyn, lake) as the water line beneath, and a leaf
  * growing from the top for the work itself. Same artwork as
- * public/favicon.svg.
+ * public/petraslynn-icon.svg.
  */
 export function LogoMark({ className = "w-11 h-11" }: LogoMarkProps) {
   // Unique per instance so the navbar and footer marks don't share a gradient id.

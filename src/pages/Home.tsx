@@ -6,17 +6,14 @@ import {
 } from "lucide-react";
 import { site, services, testimonials } from "@/config/site";
 import StarRating from "@/components/StarRating";
+import { pageImages, SIZES } from "@/config/images";
+import Photo from "@/components/Photo";
+
+const { hero: heroImage, about: aboutImage, cta: ctaImage } = pageImages.home;
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Scissors, Sparkles, Leaf, Droplets, Trees, Shovel,
 };
-
-const heroImage =
-  "https://images.pexels.com/photos/28180214/pexels-photo-28180214.jpeg?auto=compress&cs=tinysrgb&w=1200";
-const aboutImage =
-  "https://images.pexels.com/photos/4079768/pexels-photo-4079768.jpeg?auto=compress&cs=tinysrgb&w=1200";
-const ctaImage =
-  "https://images.pexels.com/photos/280222/pexels-photo-280222.jpeg?auto=compress&cs=tinysrgb&w=1600";
 
 export default function Home() {
   return (
@@ -26,14 +23,14 @@ export default function Home() {
         <div className="absolute inset-0 lg:flex">
           <div className="hidden lg:block w-[55%] pine-gradient" />
           <div className="hidden lg:block w-[45%] relative">
-            <img src={heroImage} alt="Lawn care professional mowing a suburban lawn" className="w-full h-full object-cover" />
+            <Photo priority src={heroImage} sizes={SIZES.homeHero} alt="Lawn care professional mowing a suburban lawn" className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-pine-950/20" />
           </div>
         </div>
 
         {/* Mobile background */}
         <div className="absolute inset-0 lg:hidden">
-          <img src={heroImage} alt="Lawn care" className="w-full h-full object-cover" />
+          <Photo priority src={heroImage} sizes={SIZES.homeHero} alt="Lawn care" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-pine-950/85" />
         </div>
 
@@ -168,8 +165,9 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="relative order-2 lg:order-1">
               <div className="rounded-2xl overflow-hidden shadow-2xl">
-                <img
+                <Photo
                   src={aboutImage}
+                  sizes={SIZES.half}
                   alt="Petraslynn lawn care professional at work"
                   className="w-full h-[440px] object-cover"
                 />
@@ -310,8 +308,9 @@ export default function Home() {
       {/* CTA — full-width image with navy overlay */}
       <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0">
-          <img
+          <Photo
             src={ctaImage}
+            sizes={SIZES.full}
             alt="Beautifully maintained property"
             className="w-full h-full object-cover"
           />
